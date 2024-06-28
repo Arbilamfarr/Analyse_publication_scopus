@@ -68,7 +68,7 @@ const Publication = () => {
           <Image
             src={`data:image/png;base64,${trendData.graph}`}
             alt="Graphique"
-            width={900}
+            width={1100}
             height={900}
           />
         )}

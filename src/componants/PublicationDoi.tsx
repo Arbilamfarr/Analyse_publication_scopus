@@ -40,7 +40,7 @@ const PublicationDoi: React.FC<IPublicationDoi> = (props:IPublicationDoi) => {
           </span>
           {citations}
         </p>
-        
+          <h1 className="font-medium text-xl text-center">Les affiliations</h1>
           {affiliations.map((affiliation:any,index:number)=>(
             <div key={index} className="rounded-sm shadow-md p-4 my-2">
               <p className="text-gray-600 mb-4">
