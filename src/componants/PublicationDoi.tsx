@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 interface IPublicationDoi {
   dataByDoi: {
@@ -11,12 +11,13 @@ interface IPublicationDoi {
       "affiliation-city": string;
       affilname: string;
       "affiliation-country": string;
-    };
+    }[];
   };
 }
 
 const PublicationDoi: React.FC<IPublicationDoi> = (props:IPublicationDoi) => {
-  const { doi, publicationName, title, citations, author, affiliations } =props.dataByDoi;
+  let { doi, publicationName, title, citations, author, affiliations } =props.dataByDoi;
+  console.log(typeof affiliations)
     return (
       <div className="p-4 bg-white shadow-lg rounded-lg mb-4">
         <h2 className="text-xl font-bold">{title}</h2>
@@ -39,20 +40,28 @@ const PublicationDoi: React.FC<IPublicationDoi> = (props:IPublicationDoi) => {
           </span>
           {citations}
         </p>
-        <p className="text-gray-600 mb-4">
-          <span className="font-bold text-gray-800">Affiliation : </span>
-          {affiliations.affilname}
-        </p>
-        <p className="text-gray-600 mb-4">
-          <span className="font-bold text-gray-800">
-            Ville d'affiliation :{" "}
-          </span>
-          {affiliations["affiliation-city"]}
-        </p>
-        <p className="text-gray-600 mb-4">
-          <span className="font-bold text-gray-800">pays d'affiliation : </span>
-          {affiliations['affiliation-country']}
-        </p>
+        
+          {affiliations.map((affiliation:any,index:number)=>(
+            <div key={index} className="rounded-sm shadow-md p-4 my-2">
+              <p className="text-gray-600 mb-4">
+                <span className="font-bold text-gray-800">Affiliation : </span>
+                {affiliation.affilname}
+              </p>
+              <p className="text-gray-600 mb-4">
+                <span className="font-bold text-gray-800">
+                  Ville d'affiliation :{" "}
+                </span>
+                {affiliation["affiliation-city"]}
+              </p>
+              <p className="text-gray-600 mb-4">
+                <span className="font-bold text-gray-800">
+                  pays d'affiliation :{" "}
+                </span>
+                {affiliation["affiliation-country"]}
+              </p>
+            </div>
+          ))}
+        
       </div>
     );
 };
