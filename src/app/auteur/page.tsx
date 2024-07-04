@@ -21,15 +21,24 @@ type AuthorData = {
   Distribution_citations: string;
 };
 
-type DataDoi = {
- id:string
-};
+type  TdataByDoi={
+    doi: string;
+    publicationName: string;
+    title: string;
+    citations: string;
+    author: string;
+    affiliations: {
+      "affiliation-city": string;
+      affilname: string;
+      "affiliation-country": string;
+    }[];
+  };
 
 const AuteurPublication: React.FC = () => {
   const [subject, setSubject] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
   const [data, setData] = useState<AuthorData | null>(null);
-  const [dataByDoi, setDataByDoi] = useState<DataDoi | null>(null);
+  const [dataByDoi, setDataByDoi] = useState<TdataByDoi | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
@@ -74,9 +83,9 @@ const AuteurPublication: React.FC = () => {
          `http://localhost:8000/citations/${subject}`
        );
        if (!response.ok) {
-         throw new Error("Failed to fetch data");
+         throw new Error("Failed to fetch ddataByDoiata");
        }
-       const result: DataDoi = await response.json();
+       const result: TdataByDoi = await response.json();
        setDataByDoi(result);
      } catch (err) {
        setError("Erreur lors de la récupération des données 2");

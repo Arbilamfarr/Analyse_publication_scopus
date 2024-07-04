@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -16,9 +16,7 @@ const Publication = () => {
     setError("");
     try {
       const response = await fetch(
-        `http://localhost:8000/publications/trend?query=${encodeURIComponent(
-          query
-        )}`
+        `http://localhost:8000/publications/trend?query=${query}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch data");
@@ -31,8 +29,6 @@ const Publication = () => {
       setLoading(false);
     }
   };
-
- 
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,7 +57,13 @@ const Publication = () => {
 
       <div className="w-[90%]  p-6 mx-auto flex justify-center items-center">
         {loading && (
-          <Levels color="#0068ab" className="pt-32" size={60} speed={0.7} animating={true} />
+          <Levels
+            color="#0068ab"
+            className="pt-32"
+            size={60}
+            speed={0.7}
+            animating={true}
+          />
         )}
         {error && <p className="text-red-500">{error}</p>}
         {trendData && (

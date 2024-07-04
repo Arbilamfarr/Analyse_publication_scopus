@@ -49,13 +49,13 @@ const PublicationDoi: React.FC<IPublicationDoi> = (props:IPublicationDoi) => {
               </p>
               <p className="text-gray-600 mb-4">
                 <span className="font-bold text-gray-800">
-                  Ville d'affiliation :{" "}
+                  Ville d&apos;affiliation :{" "}
                 </span>
                 {affiliation["affiliation-city"]}
               </p>
               <p className="text-gray-600 mb-4">
                 <span className="font-bold text-gray-800">
-                  pays d'affiliation :{" "}
+                  pays d&apos;affiliation :{" "}
                 </span>
                 {affiliation["affiliation-country"]}
               </p>
